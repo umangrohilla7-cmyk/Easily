@@ -1,0 +1,20 @@
+<h2>Create New Job Posting</h2>
+<form action="/jobs" method="POST">
+  <div class="mb-3"><label>Designation</label><input type="text" name="jobdesignation" class="form-control" required></div>
+  <div class="mb-3"><label>Category</label><input type="text" name="jobcategory" class="form-control" required></div>
+  <div class="mb-3"><label>Company Name</label><input type="text" name="companyname" class="form-control" required></div>
+  <div class="mb-3"><label>Location</label><input type="text" name="joblocation" class="form-control" required></div>
+  <div class="mb-3"><label>Salary Range</label><input type="text" name="salary" class="form-control" required></div>
+  <div class="mb-3"><label>Openings</label><input type="number" name="numberofopenings" class="form-control" required></div>
+  <div class="mb-3"><label>Apply By</label><input type="date" name="applyby" class="form-control" required></div>
+  <div class="mb-3">
+    <label>Skills Required</label>
+    <select multiple class="form-control" name="skillsrequired">
+      <option value="Node.js">Node.js</option>
+      <option value="Express">Express</option>
+      <option value="MongoDB">MongoDB</option>
+      <option value="React">React</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Post Job</button>
+</form>

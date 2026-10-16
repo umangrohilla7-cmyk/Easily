@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-body">
+    <h2><%= job.jobdesignation %> (<%= job.companyname %>)</h2>
+    <p>Category: <%= job.jobcategory %></p>
+    <p>Location: <%= job.joblocation %></p>
+    <p>Salary: <%= job.salary %></p>
+    <p>Openings: <%= job.numberofopenings %></p>
+    <p>Apply By: <%= job.applyby %></p>
+    <p>Skills: <%= job.skillsrequired.join(', ') %></p>
+
+    <% if (locals.userEmail) { %>
+      <a href="/jobs/<%= job.id %>/update" class="btn btn-warning">Edit</a>
+      <a href="/jobs/<%= job.id %>/delete" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+      <a href="/jobs/<%= job.id %>/applicants" class="btn btn-info">View Applicants (<%= job.applicants.length %>)</a>
+    <% } else { %>
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
+    <% } %>
+  </div>
+</div>
+
+<!-- Modal for Application -->
+<div class="modal fade" id="applyModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="/apply/<%= job.id %>" method="POST" enctype="multipart/form-data">
+        <div class="modal-header"><h5 class="modal-title">Apply for <%= job.jobdesignation %></h5></div>
+        <div class="modal-body">
+          <div class="mb-3"><label>Name</label><input type="text" name="name" class="form-control" required></div>
+          <div class="mb-3"><label>Email</label><input type="email" name="email" class="form-control" required></div>
+          <div class="mb-3"><label>Contact</label><input type="text" name="contact" class="form-control" required></div>
+          <div class="mb-3"><label>Resume (PDF)</label><input type="file" name="resume" class="form-control" required></div>
+        </div>
+        <div class="modal-footer"><button type="submit" class="btn btn-primary">Submit Application</button></div>
+      </form>
+    </div>
+  </div>
+</div>

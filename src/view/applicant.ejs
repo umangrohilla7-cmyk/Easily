@@ -1,0 +1,23 @@
+<h2>Applicants List</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Contact</th>
+      <th>Resume</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% applicants.forEach(app => { %>
+      <tr>
+        <td><%= app.applicantid %></td>
+        <td><%= app.name %></td>
+        <td><%= app.email %></td>
+        <td><%= app.contact %></td>
+        <td><a href="<%= app.resumePath %>" target="_blank" class="btn btn-sm btn-secondary">View Resume</a></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
